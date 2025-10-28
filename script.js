@@ -1,0 +1,24 @@
+        document.addEventListener("DOMContentLoaded", () => {
+            const slidingItems = document.querySelectorAll('.sliding-item');
+
+            const observerOptions = {
+                root: null, // Viewport is the root
+                threshold: 0.1 // Trigger when 10% is visible
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    const target = entry.target;
+                    if (entry.isIntersecting) {
+                        target.classList.remove('hidden-left', 'hidden-right');
+                        target.classList.add('visible');
+                    } else {
+                        const direction = entry.boundingClientRect.top < 0 ? 'hidden-left' : 'hidden-right';
+                        target.classList.remove('visible');
+                        target.classList.add(direction);
+                    }
+                });
+            }, observerOptions);
+
+            slidingItems.forEach((item) => observer.observe(item));
+        });
