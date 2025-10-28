@@ -1,0 +1,34 @@
+        .container {
+            position: relative;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 50px;
+        }
+
+        .sliding-item {
+            color: #222;
+            border-radius: 5px;
+            position: relative;
+            transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out;
+            transform: translateX(100%); /* Initially off the screen (right) */
+            opacity: 0; /* Hidden initially */
+            margin: 20px 0;
+        }
+
+        .sliding-item.visible {
+            transform: translateX(0); /* Slide into view */
+            opacity: 1; /* Fully visible */
+        }
+
+        .sliding-item.hidden-left {
+            transform: translateX(-100%); /* Slide out to the left */
+            opacity: 0; /* Hidden */
+        }
+
+        .sliding-item.hidden-right {
+            transform: translateX(100%); /* Slide out to the right */
+            opacity: 0; /* Hidden */
+        }
